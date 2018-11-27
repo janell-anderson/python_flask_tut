@@ -1,6 +1,18 @@
 from app import app
+from flask import render_template
 
 @app.route('/')
 @app.route('/index')
-def inex():
-    return "Hello, World!"
+def index():
+    user = {'username': 'Renee'}
+    posts= [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movies was so cool!'
+        }
+    ]
+    return render_template('index.html',title='Home', user=user, posts=posts)
